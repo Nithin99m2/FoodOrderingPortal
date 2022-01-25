@@ -15,12 +15,18 @@ const Uprof = (props) => {
     };
 
     const [hamm,setHam]=useState("");
+    const [hamme,setHame]=useState("");
+    const [hammee,setHamee]=useState("");
+    const [hammeee,setHameee]=useState("");
 
     axios
         .post("http://localhost:4000/user/getinfo", newUser)
         .then((response) => {
             console.log(response.data);
             setHam(response.data.name);
+            setHame(response.data.contactNumber);
+            setHamee(response.data.age);
+            setHameee(response.data.batchName);
 
 
 
@@ -32,8 +38,12 @@ const Uprof = (props) => {
 
     return <div classname="container">
         <Navbarer />
-        <br /><div style={{ textAlign: "center" }}>{localStorage.getItem("uemail")} -Yo!</div> <br />
-        <div>{hamm}</div>
+        <br />
+        <div style={{ textAlign: "center" }} >Name          : {hamm}</div>
+        <div style={{ textAlign: "center" }} >ContactNumber : {hamme}</div>
+        <div style={{ textAlign: "center" }} >Age           : {hammee}</div>
+        <div style={{ textAlign: "center" }} >BatchName     : {hammeee}</div>
+
 
 
 

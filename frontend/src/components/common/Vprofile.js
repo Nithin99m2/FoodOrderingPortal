@@ -1,8 +1,8 @@
-
+import { useState } from "react";
 import Navbarers from "/home/nithin/DASS_A1/mern-stack-boilerplate/frontend/src/components/templates/nav2";
 import axios from "axios";
 
-const uprof = (props) => {
+const Vprof = (props) => {
 
     const newUser = {
 
@@ -13,11 +13,18 @@ const uprof = (props) => {
 
     };
 
-    var hamm;
+    const [hamm,setHam]=useState("");
+    const [hamme,setHame]=useState("");
+    const [hammee,setHamee]=useState("");
+    const [hammeee,setHameee]=useState("");
     axios
         .post("http://localhost:4000/user/vgetinfo", newUser)
         .then((response) => {
             console.log(response.data);
+            setHam(response.data.name);
+            setHame(response.data.contactnumber);
+            setHamee(response.data.shopname);
+           
             
             
 
@@ -28,8 +35,11 @@ const uprof = (props) => {
 
     return <div classname="container">
         <Navbarers />
-        <br /><div style={{ textAlign: "center" }}>{localStorage.getItem("uemail")} -Yol!</div> <br />
-        <div>{hamm}</div>
+        <br />
+        <div style={{ textAlign: "center" }} >Name          : {hamm}</div>
+        <div style={{ textAlign: "center" }} >ContactNumber : {hamme}</div>
+        <div style={{ textAlign: "center" }} >Shopname      : {hammee}</div>
+        
 
 
 
@@ -47,4 +57,4 @@ const uprof = (props) => {
 
 };
 
-export default uprof;
+export default Vprof;
