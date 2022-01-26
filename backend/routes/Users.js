@@ -82,6 +82,7 @@ router.post("/login", (req, res) => {
 	const email = req.body.email;
     const password = req.body.password;
     
+
     var halo=0;
 	// Find user by email
 	User.findOne({ email }).then(user => {
@@ -144,7 +145,7 @@ router.post("/login", (req, res) => {
 
 
 router.post("/getinfo", (req, res) => {
-	const email = req.body.email;
+	const email = req.body.emaile;
     
     
     var halo=0;
@@ -204,6 +205,97 @@ router.post("/vgetinfo", (req, res) => {
 });
 
 
+router.post("/bupdate", (req, res) => {
+    const name =req.body.name;
+	const email = req.body.email;
+    const password=req.body.password;
+    const contactNumber=req.body.contactNumber;
+    const age=req.body.age;
+    const batchName=req.body.batchName;
+    
+    
+    
+	// Find user by email
+	User.findOne({ email }).then(user => {
+		// Check if user email exists
+		if (!user) {
+
+            alert("user not exists");
+            
+
+            //halo=1;
+           
+			// return res.status(404).json({
+			// 	error: "Email not found",
+			// });
+        }
+        else{
+            user.name=name;
+            user.email=email;
+            user.password=password;
+            user.contactNumber=contactNumber;
+            user.age=age;
+            user.batchName=batchName;
+
+            user.save();
+            res.send("Updated");
+
+           
+        }
+	});
+
+    
+
+   
+});
+
+
+
+router.post("/vupdate", (req, res) => {
+    const name =req.body.name;
+	const email = req.body.email;
+    const password=req.body.password;
+    const contactNumber=req.body.contactnumber;
+    const opentime=req.body.opentime;
+    const closetime=req.body.closetime;
+    const shopname=req.body.shopname;
+    
+    
+    
+	// Find user by email
+	Vendor.findOne({ email }).then(user => {
+		// Check if user email exists
+		if (!user) {
+
+            alert("user not exists");
+            
+
+            //halo=1;
+           
+			// return res.status(404).json({
+			// 	error: "Email not found",
+			// });
+        }
+        else{
+            user.name=name;
+            user.email=email;
+            user.password=password;
+            user.contactnumber=contactNumber;
+            user.shopname=shopname;
+            user.opentime=opentime;
+            user.closetime=closetime;
+
+            user.save();
+            res.send("Updated");
+
+           
+        }
+	});
+
+    
+
+   
+});
 
 
 
