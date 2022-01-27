@@ -15,6 +15,10 @@ const FoodSchema = new Schema({
 		type: Number,
 		required: true
 	},
+	email:{
+		type: String,
+		required: true
+	},
     type:{
 		type: String,
 		required: true

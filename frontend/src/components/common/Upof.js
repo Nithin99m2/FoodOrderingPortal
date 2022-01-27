@@ -131,7 +131,7 @@ const Uprof = (props) => {
       });
  
 
-    alert("Updated");
+    
     // 
     // navigate("/uprofi");
 

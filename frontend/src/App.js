@@ -15,6 +15,8 @@ import Na from "./components/users/bhome";
 import Nal from "./components/users/vhome";
 import Uhome from "./components/common/Upof";
 import Vhome from "./components/common/Vprofile";
+import Addf from "./components/common/fooditemsadd";
+import Viewf from "./components/common/foodlist";
 
 
 const Layout = () => {
@@ -48,6 +50,8 @@ function App() {
           <Route path="navl" element={<Nal />} />
           <Route path="uprofi" element={<Uhome />} />
           <Route path="vprofi" element={<Vhome />} />
+          <Route path="addfood" element={<Addf />} />
+          <Route path="viewf" element={<Viewf />} />
           
         </Route>
       </Routes>

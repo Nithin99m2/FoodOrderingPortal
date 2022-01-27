@@ -23,8 +23,8 @@ const Navbarers = () => {
             VHome
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Button color="inherit" onClick={() => navigate("/users")}>
-            Orders
+          <Button color="inherit" onClick={() => navigate("/viewf")}>
+            MyItems
           </Button>
          
           <Button color="inherit" onClick={() => navigate("/vprofi")}>
@@ -32,6 +32,9 @@ const Navbarers = () => {
           </Button>
           <Button color="inherit" onClick={() => navigate("/users")}>
             LogOut
+          </Button>
+          <Button color="inherit" onClick={() => navigate("/addfood")}>
+            AddFoodItem
           </Button>
           
         </Toolbar>
