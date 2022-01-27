@@ -229,6 +229,8 @@ router.post("/bupdate", (req, res) => {
 
             // return res.status(404).json({
             // 	error: "Email not found",
+
+
             // });
         }
         else {
@@ -303,11 +305,11 @@ router.post("/vupdate", (req, res) => {
 
 router.post("/addfood", (req, res) => {
     const newfood = new Food({
-        name : req.body.name,
-        price : req.body.price,
-        rating : req.body.rating,
-        email : req.body.email,
-        type : req.body.type
+        name: req.body.name,
+        price: req.body.price,
+        rating: req.body.rating,
+        email: req.body.email,
+        type: req.body.type
 
 
     });
@@ -323,6 +325,34 @@ router.post("/addfood", (req, res) => {
         .catch(err => {
             res.status(400).send(err);
         });
+
+
+
+});
+
+
+
+router.post("/delfood", (req, res) => {
+
+    const id = req.body.id;
+
+    Food.deleteOne({"_id":req.body.id}) 
+        .then(user=>{
+            res.send("Deleted successfully");
+
+        })
+        .catch(err=>{
+            res.status(400).send(err);
+        
+        });
+
+     
+       
+
+
+
+
+    // Find user by email
 
 
 

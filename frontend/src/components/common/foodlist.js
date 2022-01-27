@@ -24,30 +24,41 @@ import Navbarers from "../templates/nav2";
 
 const FoodList = (props) => {
   const [users, setUsers] = useState([]);
-  const [sortedUsers, setSortedUsers] = useState([]);
-  const [sortName, setSortName] = useState(true);
-  const [searchText, setSearchText] = useState("");
+
 
   useEffect(() => {
     axios
       .get("http://localhost:4000/user")
       .then((response) => {
         setUsers(response.data);
-        setSortedUsers(response.data);
-        setSearchText("");
+
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
+  const onSubmit = (helo) => {
+
+
+
+
+
+
+
+
+
+
+
+  };
+
 
   return (
     <div classname="container">
-      <Navbarers/>
-      <br/>
-     <Grid>
-     
+      <Navbarers />
+      <br />
+      <Grid>
+
         <Grid item xs={12} md={9} lg={9}>
           <Paper>
             <Table size="small">
@@ -56,7 +67,7 @@ const FoodList = (props) => {
                   <TableCell> Sr No.</TableCell>
                   <TableCell>
                     {" "}
-                   
+
                     Type
                   </TableCell>
                   <TableCell>Name</TableCell>
@@ -72,6 +83,26 @@ const FoodList = (props) => {
                     <TableCell>{user.name}</TableCell>
                     <TableCell>{user.rating}</TableCell>
                     <TableCell>{user.price}</TableCell>
+                    <TableCell> <Button variant="contained" onClick={() => {
+                      const nUser = {
+                        id: user._id,
+
+                      };
+
+
+
+                      axios
+                        .post("http://localhost:4000/user/delfood", nUser)
+                        .then((response) => {
+                          alert(response.data);
+                          window.location.reload(false);
+                          console.log(response.data);
+                        });
+
+                      
+                    }}>
+                      Delete
+                    </Button></TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -79,7 +110,7 @@ const FoodList = (props) => {
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </div >
   );
 };
 
