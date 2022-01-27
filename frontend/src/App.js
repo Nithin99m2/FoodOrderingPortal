@@ -18,6 +18,9 @@ import Vhome from "./components/common/Vprofile";
 import Addf from "./components/common/fooditemsadd";
 import Viewf from "./components/common/foodlist";
 import Edf from "./components/common/editfood";
+import Adc from "./components/common/buyitems";
+import Ulog from "./components/common/Logoutu";
+import Vlog from "./components/common/LogoutV";
 
 const Layout = () => {
   return (
@@ -53,6 +56,9 @@ function App() {
           <Route path="addfood" element={<Addf />} />
           <Route path="viewf" element={<Viewf />} />
           <Route path="editingfood" element={<Edf />} />
+          <Route path="addtocart" element={<Adc />} />
+          <Route path="ulogout" element={<Ulog />} />
+          <Route path="vlogout" element={<Vlog />} />
           
         </Route>
       </Routes>

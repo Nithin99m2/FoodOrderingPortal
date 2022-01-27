@@ -23,7 +23,7 @@ const Navbarer = () => {
             BHome
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Button color="inherit" onClick={() => navigate("/users")}>
+          <Button color="inherit" onClick={() => navigate("/addtocart")}>
             Items
           </Button>
          
@@ -32,6 +32,9 @@ const Navbarer = () => {
           </Button>
           <Button color="inherit" onClick={() => navigate("/uprofi")}>
             My Profile
+          </Button>
+          <Button color="inherit" onClick={() => navigate("/ulogout")}>
+            Logout
           </Button>
         </Toolbar>
       </AppBar>

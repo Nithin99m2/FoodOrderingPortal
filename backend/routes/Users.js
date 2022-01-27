@@ -11,8 +11,11 @@ const Food = require("../models/Food");
 
 // GET request 
 // Getting all the users
-router.get("/", function (req, res) {
-    Food.find(function (err, users) {
+router.get("/namin", function (req, res) {
+    const email=localStorage.getItem("uemail");
+   
+    
+    Food.findOne(email,function(err,users){
         if (err) {
             console.log(err);
         } else {
@@ -21,6 +24,16 @@ router.get("/", function (req, res) {
     })
 });
 
+router.get("/", function (req, res) {
+    
+    Food.find(function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+});
 
 // router.get("/Fooditems", function(req, res) {
 //     User.find(function(err, Foodie) {

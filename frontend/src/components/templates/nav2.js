@@ -30,7 +30,7 @@ const Navbarers = () => {
           <Button color="inherit" onClick={() => navigate("/vprofi")}>
             My Profile
           </Button>
-          <Button color="inherit" onClick={() => navigate("/users")}>
+          <Button color="inherit" onClick={() => navigate("/vlogout")}>
             LogOut
           </Button>
           <Button color="inherit" onClick={() => navigate("/addfood")}>
