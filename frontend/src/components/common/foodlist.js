@@ -20,10 +20,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import Navbarers from "../templates/nav2";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const FoodList = (props) => {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -39,6 +42,14 @@ const FoodList = (props) => {
   }, []);
 
   const onSubmit = (helo) => {
+
+    localStorage.setItem("vendor_id",helo);
+
+    console.log(localStorage.getItem("vendor_id"));
+
+    navigate("/editingfood");
+
+
 
 
 
@@ -102,6 +113,12 @@ const FoodList = (props) => {
                       
                     }}>
                       Delete
+                    </Button></TableCell>
+                    <TableCell> <Button variant="contained" onClick={()=>onSubmit(user._id)}> 
+
+                      
+            
+                      Edit
                     </Button></TableCell>
                   </TableRow>
                 ))}

@@ -17,7 +17,7 @@ import Uhome from "./components/common/Upof";
 import Vhome from "./components/common/Vprofile";
 import Addf from "./components/common/fooditemsadd";
 import Viewf from "./components/common/foodlist";
-
+import Edf from "./components/common/editfood";
 
 const Layout = () => {
   return (
@@ -52,6 +52,7 @@ function App() {
           <Route path="vprofi" element={<Vhome />} />
           <Route path="addfood" element={<Addf />} />
           <Route path="viewf" element={<Viewf />} />
+          <Route path="editingfood" element={<Edf />} />
           
         </Route>
       </Routes>

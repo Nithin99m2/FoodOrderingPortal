@@ -255,6 +255,30 @@ router.post("/bupdate", (req, res) => {
 
 
 
+
+router.post("/foodupdate", function (req, res) {
+    const id = req.body.id;
+   
+
+
+    Food.findById(id, function (err, users) {
+        if (err) {
+
+
+            console.log(err);
+            res.send("An error occured");
+        } else {
+            console.log(users);
+            users.name = req.body.name;
+            users.price = req.body.price;
+            users.type = req.body.type;
+            users.save();
+            res.send("Successfully updated");
+        }
+    })
+});
+
+
 router.post("/vupdate", (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
@@ -336,18 +360,18 @@ router.post("/delfood", (req, res) => {
 
     const id = req.body.id;
 
-    Food.deleteOne({"_id":req.body.id}) 
-        .then(user=>{
+    Food.deleteOne({ "_id": req.body.id })
+        .then(user => {
             res.send("Deleted successfully");
 
         })
-        .catch(err=>{
+        .catch(err => {
             res.status(400).send(err);
-        
+
         });
 
-     
-       
+
+
 
 
 
@@ -357,6 +381,23 @@ router.post("/delfood", (req, res) => {
 
 
 });
+
+
+
+// Find user by email
+router.post("/editgetinfo", function (req, res) {
+    const id = req.body.id;
+    Food.findById(id, function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+});
+
+
+
 
 
 
