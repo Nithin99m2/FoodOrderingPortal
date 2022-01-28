@@ -404,6 +404,28 @@ router.post("/emphasis", function (req, res) {
 
 
 
+
+
+router.post("/emphasiser", function (req, res) {
+    const id = req.body.id;
+   
+
+
+    Order.findById(id, function (err, users) {
+        if (err) {
+
+
+            console.log(err);
+            res.send("An error occured");
+        } else {
+            console.log(users);
+            users.status="Rejected";
+            users.save();
+            res.send("Order has been rejected");
+        }
+    })
+});
+
 router.post("/vupdate", (req, res) => {
     const name = req.body.name;
     const email = req.body.email;

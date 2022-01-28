@@ -77,7 +77,7 @@ const FoodList = (props) => {
                                         <TableCell>{user.quantity}</TableCell>
                                         <TableCell>{user.status}</TableCell>
                                         <TableCell>{(() => {
-                                            if (user.status != "ReadyforPickup") {
+                                            if (user.status != "ReadyforPickup" && user.status != "Rejected") {
 
                                                 return <Button variant="contained" onClick={() => {
                                                     const nth = {
@@ -100,6 +100,33 @@ const FoodList = (props) => {
 
 
                                                     MovetoNextstage
+                                                </Button>
+                                            }
+                                        })()}</TableCell>
+                                        <TableCell>{(() => {
+                                            if (user.status == "Placed") {
+
+                                                return <Button variant="contained" onClick={() => {
+                                                    const nth = {
+                                                        id: user._id,
+
+                                                    };
+
+                                                    axios
+                                                        .post("http://localhost:4000/user/emphasiser", nth)
+                                                        .then((response) => {
+                                                            alert(response.data);
+                                                            window.location.reload(false);
+                                                            console.log(response.data);
+                                                        });
+
+
+
+                                                }}>
+
+
+
+                                                    Reject
                                                 </Button>
                                             }
                                         })()}</TableCell>
