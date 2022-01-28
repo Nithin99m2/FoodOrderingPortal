@@ -84,6 +84,19 @@ router.post("/lela", function (req, res) {
     })
 });
 
+router.post("/lening", function (req, res) {
+    const email=req.body.email;
+    
+    Order.find({vemail:email},function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+});
+
+
 router.get("/ten", function (req, res) {
     
     
@@ -379,6 +392,81 @@ router.post("/bupdate", (req, res) => {
 
 });
 
+
+
+
+
+router.post("/far", (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    
+
+    // Find user by email
+    User.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            res.send("error occured");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+
+
+            // });
+        }
+        else {
+            user.favs.push(name);
+            
+
+            user.save();
+            res.json(user);
+
+
+        }
+    });
+
+
+
+
+});
+
+
+
+router.post("/tenner", (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    
+
+    // Find user by email
+    User.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            res.send("error occured");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+
+
+            // });
+        }
+        else {
+            res.json(user);
+
+
+        }
+    });
+
+
+
+
+});
 
 
 

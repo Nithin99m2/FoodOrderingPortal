@@ -41,9 +41,6 @@ const Iod = (props) => {
       });
   }, []);
 
-  const onSubmit=(event)=>{
-
-  };
 
   
 
@@ -95,7 +92,24 @@ const Iod = (props) => {
             
                       Order
                     </Button></TableCell>
-                    <TableCell> <Button variant="contained" onClick={()=>onSubmit()}> 
+                    <TableCell> <Button variant="contained" onClick={()=>{
+                      const nUser = {
+                        email: localStorage.getItem("uemail"),
+                        name: user.name
+
+                      };
+
+                      axios
+                        .post("http://localhost:4000/user/far", nUser)
+                        .then((response) => {
+                          alert("success");
+                          console.log(response.data);
+                        });
+
+
+
+
+                    }}> 
 
                       
             

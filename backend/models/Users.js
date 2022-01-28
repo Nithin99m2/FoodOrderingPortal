@@ -26,6 +26,10 @@ const UserSchema = new Schema({
 	batchName:{
 		type: String,
 		required: true
+	},
+	favs:{
+		type: Array,
+		required: false
 	}
 });
 

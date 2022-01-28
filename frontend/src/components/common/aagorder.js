@@ -77,7 +77,7 @@ const FoodList = (props) => {
                                         <TableCell>{user.quantity}</TableCell>
                                         <TableCell>{user.status}</TableCell>
                                         <TableCell>{(() => {
-                                            if (user.status != "ReadyforPickup" && user.status != "Rejected") {
+                                            if (user.status != "ReadyforPickup" && user.status != "Rejected" && user.status != "completed") {
 
                                                 return <Button variant="contained" onClick={() => {
                                                     const nth = {

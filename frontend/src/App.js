@@ -24,8 +24,8 @@ import Vlog from "./components/common/LogoutV";
 import Quq from "./components/common/quant";
 import Cart from "./components/common/my_cart";
 import Aag from "./components/common/aagorder";
-
-
+import Favo from "./components/common/favors";
+import Shu from "./components/common/statistics";
 
 const Layout = () => {
   return (
@@ -67,7 +67,8 @@ function App() {
           <Route path="quantity" element={<Quq />} />
           <Route path="carter" element={<Cart />} />
           <Route path="aag" element={<Aag />} />
-          
+          <Route path="Favour" element={<Favo />} />
+          <Route path="vstati" element={<Shu />} />
         </Route>
       </Routes>
     </BrowserRouter>

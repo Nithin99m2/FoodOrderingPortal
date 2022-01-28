@@ -36,6 +36,9 @@ const Navbarer = () => {
           <Button color="inherit" onClick={() => navigate("/ulogout")}>
             Logout
           </Button>
+          <Button color="inherit" onClick={() => navigate("/Favour")}>
+            Favourites
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

@@ -39,6 +39,9 @@ const Navbarers = () => {
           <Button color="inherit" onClick={() => navigate("/aag")}>
             Orders
           </Button>
+          <Button color="inherit" onClick={() => navigate("/vstati")}>
+            statistics
+          </Button>
           
         </Toolbar>
       </AppBar>
