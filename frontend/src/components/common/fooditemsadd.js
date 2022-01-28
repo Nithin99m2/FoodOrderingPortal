@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
@@ -12,6 +12,7 @@ const Register = (props) => {
   const [price, setPrice] = useState("");
   const [rating, setrating] = useState("");
   const [type, settype] = useState("");
+  const [shopname, setshopname] = useState("");
   
 
 
@@ -35,6 +36,37 @@ const Register = (props) => {
     settype(event.target.value);
   };
 
+  const newUsed = {
+
+
+    email:localStorage.getItem("uemail")
+
+
+
+  };
+
+
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:4000/user/getshop", newUsed)
+      .then((response) => {
+        console.log(response.data);
+        setshopname(response.data.shopname);
+        
+       
+       
+
+
+
+
+
+      });
+
+  }, []);
+
+
+  
 
   const resetInputs = () => {
     setName("");
@@ -57,6 +89,8 @@ const Register = (props) => {
       price : price,
       type : type,
       rating : rating,
+      shopname:shopname,
+
       
       
     };

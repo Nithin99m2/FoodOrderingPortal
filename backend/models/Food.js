@@ -22,6 +22,11 @@ const FoodSchema = new Schema({
     type:{
 		type: String,
 		required: true
+	},
+	shopname:{
+		type: String,
+		required: true
+
 	}
 });
 

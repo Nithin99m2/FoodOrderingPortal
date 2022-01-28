@@ -60,10 +60,12 @@ const Register = (props) => {
         
         if(response.data==="Buyer Logged In"){
           localStorage.setItem("uemail",email);
+
           navigate("/nav");
         }
         else if(response.data==="Vendor Logged In"){
           localStorage.setItem("uemail",email);
+          
           navigate("/navl");
 
         }

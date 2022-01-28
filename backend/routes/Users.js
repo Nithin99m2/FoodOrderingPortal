@@ -25,6 +25,39 @@ router.get("/namin", function (req, res) {
     })
 });
 
+
+
+router.post("/getshop", (req, res) => {
+    const email = req.body.email;
+
+
+    var halo = 0;
+    // Find user by email
+    Vendor.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            alert("user not exists");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+            // });
+        }
+        else {
+            res.json(user);
+
+        }
+    });
+
+
+
+
+});
+
+
 router.post("/", function (req, res) {
     const email=req.body.email;
     
@@ -118,7 +151,8 @@ router.post("/placing", (req, res) => {
         quantity: req.body.quantity,
         bemail: req.body.bemail,
         price: req.body.price,
-        status:req.body.status
+        status:req.body.status,
+        shopname:req.body.shopname
        
     });
 
@@ -480,7 +514,8 @@ router.post("/addfood", (req, res) => {
         price: req.body.price,
         rating: req.body.rating,
         email: req.body.email,
-        type: req.body.type
+        type: req.body.type,
+        shopname:req.body.shopname
 
 
     });

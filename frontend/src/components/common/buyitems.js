@@ -67,6 +67,7 @@ const Iod = (props) => {
                   <TableCell>Name</TableCell>
                   <TableCell>Rating</TableCell>
                   <TableCell>Price</TableCell>
+                  <TableCell>Shopname</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -77,6 +78,7 @@ const Iod = (props) => {
                     <TableCell>{user.name}</TableCell>
                     <TableCell>{user.rating}</TableCell>
                     <TableCell>{user.price}</TableCell>
+                    <TableCell>{user.shopname}</TableCell>
                     
                     <TableCell> <Button variant="contained" onClick={()=>{
                       localStorage.setItem("O_id",user._id);

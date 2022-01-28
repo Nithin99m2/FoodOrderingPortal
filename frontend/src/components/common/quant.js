@@ -13,6 +13,7 @@ const Uprof = (props) => {
   const [bemail, setbemail] = useState("");
   const [price, setPrice] = useState("");
   const [stats, setstatus] = useState("");
+  const [shopname, setshopname] = useState("");
   
 
 
@@ -58,6 +59,7 @@ const Uprof = (props) => {
         setvemail(response.data.email);
         setbemail(localStorage.getItem("uemail"));
         setstatus(newUser.status);
+        setshopname(response.data.shopname);
        
        
 
@@ -95,6 +97,7 @@ const Uprof = (props) => {
       price:price,
       quantity:quantity,
       status:stats,
+      shopname:shopname,
 
     };
 

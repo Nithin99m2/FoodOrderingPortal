@@ -26,6 +26,10 @@ const Orderschema = new Schema({
     status:{
         type:String,
         required:true
+    },
+    shopname:{
+        type:String,
+        required:true
     }
 });
 

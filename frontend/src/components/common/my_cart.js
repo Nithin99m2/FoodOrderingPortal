@@ -68,6 +68,7 @@ const FoodLista = (props) => {
                                     <TableCell>vendor</TableCell>
                                     <TableCell>Price</TableCell>
                                     <TableCell>Quantity</TableCell>
+                                    <TableCell>Shopname</TableCell>
                                     <TableCell>Status</TableCell>
                                     <TableCell>Tenki</TableCell>
                                 </TableRow>
@@ -81,6 +82,7 @@ const FoodLista = (props) => {
                                         <TableCell>{user.vemail}</TableCell>
                                         <TableCell>{user.price}</TableCell>
                                         <TableCell>{user.quantity}</TableCell>
+                                        <TableCell>{user.shopname}</TableCell>
                                         <TableCell>{user.status}</TableCell>
                                         <TableCell>{(() => {
                                             if (user.status === "ReadyforPickup") {
