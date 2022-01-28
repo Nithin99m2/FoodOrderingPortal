@@ -12,6 +12,10 @@ const Uprof = (props) => {
   const [quantity, setquantity] = useState("");
   const [bemail, setbemail] = useState("");
   const [price, setPrice] = useState("");
+  const [stats, setstatus] = useState("");
+  
+
+
   
   const navigate = useNavigate();
 
@@ -26,6 +30,7 @@ const Uprof = (props) => {
 
 
     id: localStorage.getItem("O_id"),
+    status:"Placed",
 
 
 
@@ -35,7 +40,7 @@ const Uprof = (props) => {
 
 
 
-
+   
 
 
 
@@ -52,6 +57,8 @@ const Uprof = (props) => {
         setPrice(response.data.price);
         setvemail(response.data.email);
         setbemail(localStorage.getItem("uemail"));
+        setstatus(newUser.status);
+       
        
 
 
@@ -86,7 +93,8 @@ const Uprof = (props) => {
       bemail: bemail,
       vemail:vemail,
       price:price,
-      quantity:quantity
+      quantity:quantity,
+      status:stats,
 
     };
 

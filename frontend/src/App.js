@@ -23,6 +23,9 @@ import Ulog from "./components/common/Logoutu";
 import Vlog from "./components/common/LogoutV";
 import Quq from "./components/common/quant";
 import Cart from "./components/common/my_cart";
+import Aag from "./components/common/aagorder";
+
+
 
 const Layout = () => {
   return (
@@ -63,6 +66,7 @@ function App() {
           <Route path="vlogout" element={<Vlog />} />
           <Route path="quantity" element={<Quq />} />
           <Route path="carter" element={<Cart />} />
+          <Route path="aag" element={<Aag />} />
           
         </Route>
       </Routes>

@@ -37,6 +37,20 @@ router.post("/", function (req, res) {
     })
 });
 
+
+
+router.post("/lela", function (req, res) {
+    const email=req.body.email;
+    
+    Order.find({vemail:email},function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+});
+
 router.get("/ten", function (req, res) {
     
     
@@ -104,6 +118,7 @@ router.post("/placing", (req, res) => {
         quantity: req.body.quantity,
         bemail: req.body.bemail,
         price: req.body.price,
+        status:req.body.status
        
     });
 
@@ -354,6 +369,39 @@ router.post("/foodupdate", function (req, res) {
         }
     })
 });
+
+
+router.post("/emphasis", function (req, res) {
+    const id = req.body.id;
+   
+
+
+    Order.findById(id, function (err, users) {
+        if (err) {
+
+
+            console.log(err);
+            res.send("An error occured");
+        } else {
+            console.log(users);
+            if(users.status==="Placed"){
+                users.status="Accepted";
+            }
+            else if(users.status==="Accepted"){
+                users.status="Cooked";
+            }
+            else if(users.status==="Cooked"){
+                users.status="ReadyforPickup";
+            }
+            else if(users.status==="ReadyforPickup"){
+                users.status="completed";
+            }
+            users.save();
+            res.send("Moved to nextStage");
+        }
+    })
+});
+
 
 
 router.post("/vupdate", (req, res) => {

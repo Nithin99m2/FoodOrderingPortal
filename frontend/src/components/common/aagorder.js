@@ -19,24 +19,22 @@ import Navbar from "/home/nithin/DASS_A1/mern-stack-boilerplate/frontend/src/com
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import Navbarer from "../templates/nav1";
+import Navbarers from "../templates/nav2";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-const FoodLista = (props) => {
+const FoodList = (props) => {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
 
 
     useEffect(() => {
-
-
-        const mi = {
+        const heh = {
             email: localStorage.getItem("uemail")
         }
         axios
-            .post("http://localhost:4000/user/jm", mi)
+            .post("http://localhost:4000/user/lela", heh)
             .then((response) => {
                 setUsers(response.data);
 
@@ -47,13 +45,11 @@ const FoodLista = (props) => {
     }, []);
 
 
-    const onSubmit = (event) => {
 
-    }
 
     return (
         <div classname="container">
-            <Navbarer />
+            <Navbarers />
             <br />
             <Grid>
 
@@ -63,13 +59,11 @@ const FoodLista = (props) => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell> Sr No.</TableCell>
-
                                     <TableCell>Name</TableCell>
-                                    <TableCell>vendor</TableCell>
+                                    <TableCell>BuyerEmail</TableCell>
                                     <TableCell>Price</TableCell>
                                     <TableCell>Quantity</TableCell>
                                     <TableCell>Status</TableCell>
-                                    <TableCell>Tenki</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -78,46 +72,42 @@ const FoodLista = (props) => {
                                         <TableCell>{ind}</TableCell>
 
                                         <TableCell>{user.name}</TableCell>
-                                        <TableCell>{user.vemail}</TableCell>
+                                        <TableCell>{user.bemail}</TableCell>
                                         <TableCell>{user.price}</TableCell>
                                         <TableCell>{user.quantity}</TableCell>
                                         <TableCell>{user.status}</TableCell>
                                         <TableCell>{(() => {
-                                            if (user.status === "ReadyforPickup") {
-                                                return <Button variant="contained" onClick={()=>{
+                                            if (user.status != "ReadyforPickup") {
+
+                                                return <Button variant="contained" onClick={() => {
                                                     const nth = {
                                                         id: user._id,
-                                
+
                                                     };
-                            
+
                                                     axios
-                                                    .post("http://localhost:4000/user/emphasis", nth)
-                                                    .then((response) => {
-                                                      alert(response.data);
-                                                      window.location.reload(false);
-                                                      console.log(response.data);
-                                                    });
-                            
-                            
-                            
+                                                        .post("http://localhost:4000/user/emphasis", nth)
+                                                        .then((response) => {
+                                                            alert(response.data);
+                                                            window.location.reload(false);
+                                                            console.log(response.data);
+                                                        });
+
+
+
                                                 }}>
-                            
-                                                  
-                                        
-                                                  PickUp
+
+
+
+                                                    MovetoNextstage
                                                 </Button>
-                                            } 
-                                            
+                                            }
                                         })()}</TableCell>
-
-
-
-
-
 
                                     </TableRow>
                                 ))}
                             </TableBody>
+
                         </Table>
                     </Paper>
                 </Grid>
@@ -126,4 +116,4 @@ const FoodLista = (props) => {
     );
 };
 
-export default FoodLista;
+export default FoodList;
