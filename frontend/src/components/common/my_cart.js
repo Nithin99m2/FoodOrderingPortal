@@ -24,14 +24,19 @@ import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-const Iod = (props) => {
+const FoodLista = (props) => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
 
   useEffect(() => {
+
+
+    const mi={
+        email:localStorage.getItem("uemail")
+    }
     axios
-      .get("http://localhost:4000/user/ten")
+      .post("http://localhost:4000/user/jm",mi)
       .then((response) => {
         setUsers(response.data);
 
@@ -40,12 +45,6 @@ const Iod = (props) => {
         console.log(error);
       });
   }, []);
-
-  const onSubmit=(event)=>{
-
-  };
-
-  
 
   return (
     <div classname="container">
@@ -59,46 +58,23 @@ const Iod = (props) => {
               <TableHead>
                 <TableRow>
                   <TableCell> Sr No.</TableCell>
-                  <TableCell>
-                    {" "}
-
-                    Type
-                  </TableCell>
+                  
                   <TableCell>Name</TableCell>
-                  <TableCell>Rating</TableCell>
+                  <TableCell>vendor</TableCell>
                   <TableCell>Price</TableCell>
+                  <TableCell>Quantity</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {users.map((user, ind) => (
                   <TableRow key={ind}>
                     <TableCell>{ind}</TableCell>
-                    <TableCell>{user.type}</TableCell>
+        
                     <TableCell>{user.name}</TableCell>
-                    <TableCell>{user.rating}</TableCell>
+                    <TableCell>{user.vemail}</TableCell>
                     <TableCell>{user.price}</TableCell>
-                    
-                    <TableCell> <Button variant="contained" onClick={()=>{
-                      localStorage.setItem("O_id",user._id);
-
-                      navigate("/quantity");
-
-
-
-
-
-                    }}> 
-
-                      
-            
-                      Order
-                    </Button></TableCell>
-                    <TableCell> <Button variant="contained" onClick={()=>onSubmit()}> 
-
-                      
-            
-                      AddtoFav
-                    </Button></TableCell>
+                    <TableCell>{user.quantity}</TableCell>
+        
                   </TableRow>
                 ))}
               </TableBody>
@@ -110,4 +86,4 @@ const Iod = (props) => {
   );
 };
 
-export default Iod;
+export default FoodLista;

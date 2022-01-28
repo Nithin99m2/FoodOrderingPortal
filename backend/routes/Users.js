@@ -8,6 +8,7 @@ const User = require("../models/Users");
 const Vendor = require("../models/Vendor");
 
 const Food = require("../models/Food");
+const Order = require("../models/Order");
 
 // GET request 
 // Getting all the users
@@ -24,7 +25,20 @@ router.get("/namin", function (req, res) {
     })
 });
 
-router.get("/", function (req, res) {
+router.post("/", function (req, res) {
+    const email=req.body.email;
+    
+    Food.find({email:email},function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+});
+
+router.get("/ten", function (req, res) {
+    
     
     Food.find(function (err, users) {
         if (err) {
@@ -35,6 +49,18 @@ router.get("/", function (req, res) {
     })
 });
 
+
+router.post("/jm", function (req, res) {
+    const email=req.body.email;
+    
+    Order.find({bemail:email},function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+});
 // router.get("/Fooditems", function(req, res) {
 //     User.find(function(err, Foodie) {
 // 		if (err) {
@@ -63,6 +89,27 @@ router.post("/ur", (req, res) => {
     newUser.save()
         .then(user => {
             res.status(200).json(user);
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+});
+
+
+
+router.post("/placing", (req, res) => {
+    const newUser = new Order({
+        name: req.body.name,
+        vemail: req.body.vemail,
+        quantity: req.body.quantity,
+        bemail: req.body.bemail,
+        price: req.body.price,
+       
+    });
+
+    newUser.save()
+        .then(user => {
+            res.send("Order placed");
         })
         .catch(err => {
             res.status(400).send(err);
@@ -183,6 +230,23 @@ router.post("/getinfo", (req, res) => {
 
         }
     });
+
+
+
+
+});
+
+
+
+router.post("/foodgetinfo", (req, res) => {
+    const id = req.body.id;
+    Food.findById(id, function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
 
 
 

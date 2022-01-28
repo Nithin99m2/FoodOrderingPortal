@@ -30,8 +30,11 @@ const FoodList = (props) => {
 
 
   useEffect(() => {
+    const heh={
+      email:localStorage.getItem("uemail")
+    }
     axios
-      .get("http://localhost:4000/user")
+      .post("http://localhost:4000/user",heh)
       .then((response) => {
         setUsers(response.data);
 

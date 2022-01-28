@@ -21,6 +21,8 @@ import Edf from "./components/common/editfood";
 import Adc from "./components/common/buyitems";
 import Ulog from "./components/common/Logoutu";
 import Vlog from "./components/common/LogoutV";
+import Quq from "./components/common/quant";
+import Cart from "./components/common/my_cart";
 
 const Layout = () => {
   return (
@@ -59,6 +61,8 @@ function App() {
           <Route path="addtocart" element={<Adc />} />
           <Route path="ulogout" element={<Ulog />} />
           <Route path="vlogout" element={<Vlog />} />
+          <Route path="quantity" element={<Quq />} />
+          <Route path="carter" element={<Cart />} />
           
         </Route>
       </Routes>

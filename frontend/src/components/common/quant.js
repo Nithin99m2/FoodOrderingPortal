@@ -1,0 +1,164 @@
+import { useEffect, useState } from "react";
+import Navbarer from "/home/nithin/DASS_A1/mern-stack-boilerplate/frontend/src/components/templates/nav1";
+import axios from "axios";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+
+const Uprof = (props) => {
+  const [name, setName] = useState("");
+  const [vemail, setvemail] = useState("");
+  const [quantity, setquantity] = useState("");
+  const [bemail, setbemail] = useState("");
+  const [price, setPrice] = useState("");
+  
+  const navigate = useNavigate();
+
+ 
+
+  const onChangequantity = (event) => {
+    setquantity(event.target.value);
+  };
+
+
+  const newUser = {
+
+
+    id: localStorage.getItem("O_id"),
+
+
+
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:4000/user/foodgetinfo", newUser)
+      .then((response) => {
+        console.log(response.data);
+        setName(response.data.name);
+        setPrice(response.data.price);
+        setvemail(response.data.email);
+        setbemail(localStorage.getItem("uemail"));
+       
+
+
+
+
+
+      });
+
+  }, []);
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+
+    const neeUser = {
+      name: name,
+      bemail: bemail,
+      vemail:vemail,
+      price:price,
+      quantity:quantity
+
+    };
+
+
+
+    axios
+      .post("http://localhost:4000/user/placing", neeUser)
+      .then((response) => {
+        alert(response.data);
+        console.log(response.data);
+        navigate("/carter");
+      });
+ 
+
+    
+    // 
+    // navigate("/uprofi");
+
+
+
+
+
+  };
+
+  //setName({hamm});
+
+
+  //resetInputs();
+
+
+
+
+  return (<div classname="container">
+    <Navbarer />
+
+    <br />
+
+
+    <Grid container align={"center"} spacing={2}>
+      <Grid item xs={12}>
+        <TextField
+          label="Quantity"
+          variant="outlined"
+          value={quantity}
+          onChange={onChangequantity}
+        />
+      </Grid>
+
+      <Grid item xs={12}>
+        <Button variant="contained" onClick={onSubmit}>
+          OrderPlace
+        </Button>
+      </Grid>
+
+
+
+    </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  );
+
+};
+
+export default Uprof;
