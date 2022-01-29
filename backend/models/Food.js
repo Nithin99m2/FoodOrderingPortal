@@ -27,6 +27,16 @@ const FoodSchema = new Schema({
 		type: String,
 		required: true
 
+	},
+	opentime:{
+		type: String,
+		required: false
+
+	},
+	closetime:{
+		type: String,
+		required: false
+
 	}
 });
 

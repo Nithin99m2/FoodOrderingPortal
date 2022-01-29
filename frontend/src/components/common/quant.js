@@ -15,6 +15,8 @@ const Uprof = (props) => {
   const [stats, setstatus] = useState("");
   const [shopname, setshopname] = useState("");
   const [money, setmoney] = useState("");
+  
+
 
 
 
@@ -74,6 +76,14 @@ const Uprof = (props) => {
       });
 
   }, []);
+
+
+
+
+  
+
+
+
 
 
   const netUser = {
@@ -140,7 +150,8 @@ const Uprof = (props) => {
         price: price,
         quantity: quantity,
         status: stats,
-        shopname: shopname,
+        shopname: shopname
+
 
       };
 
@@ -151,13 +162,14 @@ const Uprof = (props) => {
         .then((response) => {
           alert(response.data);
           console.log(response.data);
-          
+         
+
         });
 
 
-      const ml={
-        email:localStorage.getItem("uemail"),
-        dd:amount
+      const ml = {
+        email: localStorage.getItem("uemail"),
+        dd: amount
       }
 
 
@@ -165,7 +177,7 @@ const Uprof = (props) => {
       axios
         .post("http://localhost:4000/user/machine", ml)
         .then((response) => {
-          
+
           console.log(response.data);
           navigate("/carter");
         });

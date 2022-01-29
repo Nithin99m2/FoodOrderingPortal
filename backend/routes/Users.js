@@ -167,7 +167,8 @@ router.post("/placing", (req, res) => {
         bemail: req.body.bemail,
         price: req.body.price,
         status:req.body.status,
-        shopname:req.body.shopname
+        shopname:req.body.shopname,
+        
        
     });
 
@@ -331,7 +332,35 @@ router.post("/tower", (req, res) => {
 
 });
 
+router.post("/urgn", (req, res) => {
+    const email = req.body.email;
 
+
+    var halo = 0;
+    // Find user by email
+    Vendor.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            res.send("vendor not exists");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+            // });
+        }
+        else {
+            res.json(user);
+
+        }
+    });
+
+
+
+
+});
 
 router.post("/foodgetinfo", (req, res) => {
     const id = req.body.id;
@@ -754,7 +783,9 @@ router.post("/addfood", (req, res) => {
         rating: req.body.rating,
         email: req.body.email,
         type: req.body.type,
-        shopname:req.body.shopname
+        shopname:req.body.shopname,
+        opentime:req.body.opentime,
+        closetime:req.body.closetime
 
 
     });
