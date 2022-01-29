@@ -168,6 +168,7 @@ router.post("/placing", (req, res) => {
         price: req.body.price,
         status:req.body.status,
         shopname:req.body.shopname,
+        ordertime:req.body.ordertime
         
        
     });
@@ -785,7 +786,9 @@ router.post("/addfood", (req, res) => {
         type: req.body.type,
         shopname:req.body.shopname,
         opentime:req.body.opentime,
-        closetime:req.body.closetime
+        closetime:req.body.closetime,
+        vendorname:req.body.vendorname
+
 
 
     });

@@ -37,6 +37,10 @@ const FoodSchema = new Schema({
 		type: String,
 		required: false
 
+	},
+	vendorname:{
+		type:String,
+		required:false
 	}
 });
 

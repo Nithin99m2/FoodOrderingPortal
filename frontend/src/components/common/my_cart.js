@@ -70,7 +70,7 @@ const FoodLista = (props) => {
                                     <TableCell>Quantity</TableCell>
                                     <TableCell>Shopname</TableCell>
                                     <TableCell>Status</TableCell>
-                                    <TableCell>Tenki</TableCell>
+                                    <TableCell>Ordertime</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -84,6 +84,7 @@ const FoodLista = (props) => {
                                         <TableCell>{user.quantity}</TableCell>
                                         <TableCell>{user.shopname}</TableCell>
                                         <TableCell>{user.status}</TableCell>
+                                        <TableCell>{user.ordertime}</TableCell>
                                         <TableCell>{(() => {
                                             if (user.status === "ReadyforPickup") {
                                                 return <Button variant="contained" onClick={()=>{

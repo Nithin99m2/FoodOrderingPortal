@@ -15,6 +15,7 @@ const Register = (props) => {
   const [shopname, setshopname] = useState("");
   const [opentime, setopentime] = useState("");
   const [closetime, setClosetime] = useState("");
+  const [vendorname, setvendorname] = useState("");
   
 
 
@@ -57,6 +58,7 @@ const Register = (props) => {
         setshopname(response.data.shopname);
         setopentime(response.data.opentime);
         setClosetime(response.data.closetime);
+        setvendorname(response.data.name);
         
        
        
@@ -95,7 +97,8 @@ const Register = (props) => {
       rating : rating,
       shopname:shopname,
       opentime:opentime,
-      closetime:closetime
+      closetime:closetime,
+      vendorname:vendorname
 
       
       

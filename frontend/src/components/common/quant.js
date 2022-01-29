@@ -114,6 +114,10 @@ const Uprof = (props) => {
   }, []);
 
 
+  var today = new Date();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+
 
 
 
@@ -150,7 +154,9 @@ const Uprof = (props) => {
         price: price,
         quantity: quantity,
         status: stats,
-        shopname: shopname
+        shopname: shopname,
+        ordertime:time
+
 
 
       };

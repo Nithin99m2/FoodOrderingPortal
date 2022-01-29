@@ -64,6 +64,7 @@ const FoodList = (props) => {
                                     <TableCell>Price</TableCell>
                                     <TableCell>Quantity</TableCell>
                                     <TableCell>Status</TableCell>
+                                    <TableCell>OrderTime</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -76,6 +77,7 @@ const FoodList = (props) => {
                                         <TableCell>{user.price}</TableCell>
                                         <TableCell>{user.quantity}</TableCell>
                                         <TableCell>{user.status}</TableCell>
+                                        <TableCell>{user.ordertime}</TableCell>
                                         <TableCell>{(() => {
                                             if (user.status != "ReadyforPickup" && user.status != "Rejected" && user.status != "completed") {
 

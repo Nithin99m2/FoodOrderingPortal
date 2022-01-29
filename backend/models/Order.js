@@ -30,6 +30,10 @@ const Orderschema = new Schema({
     shopname:{
         type:String,
         required:true
+    },
+	ordertime:{
+        type:String,
+        required:false
     }
 
 });

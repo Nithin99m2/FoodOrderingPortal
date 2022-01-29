@@ -29,6 +29,13 @@ const Iod = (props) => {
   const navigate = useNavigate();
 
 
+  const don = new Date();
+  let hour = don.getHours();
+
+
+
+
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/user/ten")
@@ -42,10 +49,11 @@ const Iod = (props) => {
   }, []);
 
 
-  
 
 
-  
+
+
+
 
   return (
     <div classname="container">
@@ -68,6 +76,7 @@ const Iod = (props) => {
                   <TableCell>Rating</TableCell>
                   <TableCell>Price</TableCell>
                   <TableCell>Shopname</TableCell>
+                  <TableCell>VendorName</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -79,23 +88,39 @@ const Iod = (props) => {
                     <TableCell>{user.rating}</TableCell>
                     <TableCell>{user.price}</TableCell>
                     <TableCell>{user.shopname}</TableCell>
-                    
-                    <TableCell> <Button variant="contained" onClick={()=>{
-                      localStorage.setItem("O_id",user._id);
+                    <TableCell>{user.vendorname}</TableCell>
 
-                      navigate("/quantity");
+                    <TableCell> {(() => {
+                      let ewy = parseInt(user.opentime);
+                      let ewyuu = parseInt(user.closetime);
+                      console.log(ewyuu);
+
+                      if (hour >= ewy && hour <= ewyuu) {
+                        return <Button variant="contained" onClick={() => {
+                          localStorage.setItem("O_id", user._id);
+
+                          navigate("/quantity");
 
 
 
 
 
-                    }}> 
+                        }}>
 
-                      
-            
-                      Order
-                    </Button></TableCell>
-                    <TableCell> <Button variant="contained" onClick={()=>{
+
+
+                          Order
+                        </Button>
+                      }
+                      else{
+                        return <button onClick={()=>{
+                          alert("Sorry Restaurent is Closed");
+
+                        }}>Unavailble</button>
+                      }
+                    })()}
+                    </TableCell>
+                    <TableCell> <Button variant="contained" onClick={() => {
                       const nUser = {
                         email: localStorage.getItem("uemail"),
                         name: user.name
@@ -112,10 +137,10 @@ const Iod = (props) => {
 
 
 
-                    }}> 
+                    }}>
 
-                      
-            
+
+
                       AddtoFav
                     </Button></TableCell>
                   </TableRow>
