@@ -26,6 +26,8 @@ import Cart from "./components/common/my_cart";
 import Aag from "./components/common/aagorder";
 import Favo from "./components/common/favors";
 import Shu from "./components/common/statistics";
+import Sk from "./components/common/wallet";
+
 
 const Layout = () => {
   return (
@@ -69,6 +71,7 @@ function App() {
           <Route path="aag" element={<Aag />} />
           <Route path="Favour" element={<Favo />} />
           <Route path="vstati" element={<Shu />} />
+          <Route path="Sk" element={<Sk />} />
         </Route>
       </Routes>
     </BrowserRouter>

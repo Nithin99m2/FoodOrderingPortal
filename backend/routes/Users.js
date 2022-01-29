@@ -137,13 +137,15 @@ router.post("/jm", function (req, res) {
 // Add a user to db
 
 router.post("/ur", (req, res) => {
+    let h=0;
     const newUser = new User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
         contactNumber: req.body.contactNumber,
         age: req.body.age,
-        batchName: req.body.batchName
+        batchName: req.body.batchName,
+        wallet:h
     });
 
     newUser.save()
@@ -299,6 +301,37 @@ router.post("/getinfo", (req, res) => {
 });
 
 
+router.post("/tower", (req, res) => {
+    const email = req.body.email;
+
+
+    var halo = 0;
+    // Find user by email
+    User.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            alert("user not exists");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+            // });
+        }
+        else {
+            res.json(user);
+
+        }
+    });
+
+
+
+
+});
+
+
 
 router.post("/foodgetinfo", (req, res) => {
     const id = req.body.id;
@@ -393,6 +426,44 @@ router.post("/bupdate", (req, res) => {
 });
 
 
+router.post("/machine", (req, res) => {
+   
+    const email = req.body.email;
+    const money = req.body.dd;
+
+
+
+
+    // Find user by email
+    User.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            alert("user not exists");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+
+
+            // });
+        }
+        else {
+            user.wallet = user.wallet - money;
+
+            user.save();
+            res.send("money deducted");
+
+
+        }
+    });
+
+
+
+
+});
 
 
 
@@ -434,6 +505,86 @@ router.post("/far", (req, res) => {
 });
 
 
+
+
+
+
+
+router.post("/walletism", (req, res) => {
+    var wallet=parseInt(req.body.wallet);
+   
+    const email = req.body.email;
+    
+
+    // Find user by email
+    User.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            res.send("error occured");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+
+
+            // });
+        }
+        else {
+           
+            user.wallet=user.wallet+wallet; 
+
+            user.save();
+            res.json(user);
+
+
+        }
+    });
+
+
+
+
+});
+
+router.post("/refund", (req, res) => {
+    var wallet=req.body.addi;
+   
+    const email = req.body.email;
+    
+
+    // Find user by email
+    User.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            res.send("error occured");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+
+
+            // });
+        }
+        else {
+           
+            user.wallet=user.wallet+wallet; 
+
+            user.save();
+            res.json(user);
+
+
+        }
+    });
+
+
+
+
+});
 
 router.post("/tenner", (req, res) => {
     const name = req.body.name;

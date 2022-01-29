@@ -39,6 +39,9 @@ const Navbarer = () => {
           <Button color="inherit" onClick={() => navigate("/Favour")}>
             Favourites
           </Button>
+          <Button color="inherit" onClick={() => navigate("/Sk")}>
+            Mywallet
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

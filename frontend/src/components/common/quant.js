@@ -14,13 +14,14 @@ const Uprof = (props) => {
   const [price, setPrice] = useState("");
   const [stats, setstatus] = useState("");
   const [shopname, setshopname] = useState("");
-  
+  const [money, setmoney] = useState("");
 
 
-  
+
+
   const navigate = useNavigate();
 
- 
+
 
   const onChangequantity = (event) => {
     setquantity(event.target.value);
@@ -31,7 +32,7 @@ const Uprof = (props) => {
 
 
     id: localStorage.getItem("O_id"),
-    status:"Placed",
+    status: "Placed",
 
 
 
@@ -41,7 +42,10 @@ const Uprof = (props) => {
 
 
 
-   
+
+
+
+
 
 
 
@@ -60,8 +64,36 @@ const Uprof = (props) => {
         setbemail(localStorage.getItem("uemail"));
         setstatus(newUser.status);
         setshopname(response.data.shopname);
-       
-       
+
+
+
+
+
+
+
+      });
+
+  }, []);
+
+
+  const netUser = {
+
+
+    email: localStorage.getItem("uemail"),
+
+
+
+  };
+
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:4000/user/tower", netUser)
+      .then((response) => {
+        console.log(response.data);
+        setmoney(response.data.wallet);
+
+
 
 
 
@@ -73,7 +105,7 @@ const Uprof = (props) => {
 
 
 
- 
+
 
 
 
@@ -87,32 +119,65 @@ const Uprof = (props) => {
 
 
   const onSubmit = (event) => {
-    event.preventDefault();
+
+    var hello = parseInt(quantity);
+    var amount = hello * price;
 
 
-    const neeUser = {
-      name: name,
-      bemail: bemail,
-      vemail:vemail,
-      price:price,
-      quantity:quantity,
-      status:stats,
-      shopname:shopname,
-
-    };
+    if (money >= amount) {
+      console.log(amount);
+      console.log(money);
 
 
 
-    axios
-      .post("http://localhost:4000/user/placing", neeUser)
-      .then((response) => {
-        alert(response.data);
-        console.log(response.data);
-        navigate("/carter");
-      });
- 
+      event.preventDefault();
 
-    
+
+      const neeUser = {
+        name: name,
+        bemail: bemail,
+        vemail: vemail,
+        price: price,
+        quantity: quantity,
+        status: stats,
+        shopname: shopname,
+
+      };
+
+
+
+      axios
+        .post("http://localhost:4000/user/placing", neeUser)
+        .then((response) => {
+          alert(response.data);
+          console.log(response.data);
+          
+        });
+
+
+      const ml={
+        email:localStorage.getItem("uemail"),
+        dd:amount
+      }
+
+
+
+      axios
+        .post("http://localhost:4000/user/machine", ml)
+        .then((response) => {
+          
+          console.log(response.data);
+          navigate("/carter");
+        });
+    }
+    else {
+
+      alert("Not enough money");
+    }
+
+
+
+
     // 
     // navigate("/uprofi");
 
@@ -147,6 +212,7 @@ const Uprof = (props) => {
       </Grid>
 
       <Grid item xs={12}>
+
         <Button variant="contained" onClick={onSubmit}>
           OrderPlace
         </Button>

@@ -121,6 +121,25 @@ const FoodList = (props) => {
                                                         });
 
 
+                                                    var qu=user.quantity;
+                                                    var pr=user.price;
+                                                    qu=qu*pr;
+
+                                                    const sd ={
+                                                        email:user.bemail,
+                                                        addi:qu
+
+                                                    }
+
+                                                    axios
+                                                        .post("http://localhost:4000/user/refund", sd)
+                                                        .then((response) => {
+                                                            
+                                                            
+                                                            console.log(response.data);
+                                                        });
+
+
 
                                                 }}>
 

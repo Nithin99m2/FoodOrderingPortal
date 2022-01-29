@@ -13,6 +13,7 @@ const Uprof = (props) => {
   const [contactNumber, setContactNumber] = useState("");
   const [age, setAge] = useState("");
   const [batchName, setBatchName] = useState("");
+  const [wallet, setwallet] = useState("");
 
   const navigate = useNavigate();
 
@@ -73,6 +74,7 @@ const Uprof = (props) => {
         setPassword(response.data.password);
         setAge(response.data.age);
         setBatchName(response.data.batchName);
+        setwallet(response.data.wallet);
 
 
 
@@ -156,6 +158,7 @@ const Uprof = (props) => {
     <div style={{ textAlign: "center" }} >ContactNumber : {contactNumber}</div>
     <div style={{ textAlign: "center" }} >Age           : {age}</div>
     <div style={{ textAlign: "center" }} >BatchName     : {batchName}</div>
+    <div style={{ textAlign: "center" }} >wallet     : {wallet}</div>
     <br />
 
 

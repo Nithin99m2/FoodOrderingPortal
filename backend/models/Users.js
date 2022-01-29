@@ -30,6 +30,12 @@ const UserSchema = new Schema({
 	favs:{
 		type: Array,
 		required: false
+	},
+	wallet:{
+		type: Number,
+		required: false,
+		min:0,
+		default:0
 	}
 });
 
