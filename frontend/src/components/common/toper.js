@@ -58,6 +58,8 @@ const UsersList = (props) => {
         setSortName(!sortName);
     };
 
+    
+
 
     const sortChanger = () => {
         let usersTemp = users;

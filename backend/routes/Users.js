@@ -1,3 +1,4 @@
+
 var express = require("express");
 var router = express.Router();
 
@@ -182,6 +183,8 @@ router.post("/placing", (req, res) => {
         status: req.body.status,
         shopname: req.body.shopname,
         ordertime: req.body.ordertime,
+        yes:0,
+        ant:0,
     
 
 
@@ -853,6 +856,48 @@ router.post("/foodupdate", function (req, res) {
 });
 
 
+
+router.post("/hopes", function (req, res) {
+    const id = req.body.id;
+
+
+
+    Order.findById(id, function (err, users) {
+        if (err) {
+
+
+            console.log(err);
+            res.send("An error occured");
+        } else {
+            users.yes=1;
+            users.save();
+            res.send("Successfully updated");
+        }
+    })
+});
+
+
+router.post("/hopesof", function (req, res) {
+    const id = req.body.id;
+
+
+
+    Order.findById(id, function (err, users) {
+        if (err) {
+
+
+            console.log(err);
+            res.send("An error occured");
+        } else {
+            users.ant=1;
+            users.save();
+            res.send("Successfully updated");
+        }
+    })
+});
+
+
+
 router.post("/emphasis", function (req, res) {
     const id = req.body.id;
 
@@ -889,6 +934,7 @@ router.post("/emphasis", function (req, res) {
                         if(user.counter<10){
                             users.status = "Accepted";
                             user.counter=user.counter+1;
+                            
 
                         }
                         else{

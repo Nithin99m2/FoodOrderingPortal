@@ -34,6 +34,16 @@ const Orderschema = new Schema({
 	ordertime:{
         type:String,
         required:false
+    },
+	yes:{
+        type:Number,
+        required:false,
+		default:0
+    },
+	ant:{
+        type:Number,
+        required:false,
+		default:0
     }
 
 
