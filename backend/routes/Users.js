@@ -13,10 +13,10 @@ const Order = require("../models/Order");
 // GET request 
 // Getting all the users
 router.get("/namin", function (req, res) {
-    const email=localStorage.getItem("uemail");
-   
-    
-    Food.findOne(email,function(err,users){
+    const email = localStorage.getItem("uemail");
+
+
+    Food.findOne(email, function (err, users) {
         if (err) {
             console.log(err);
         } else {
@@ -59,9 +59,9 @@ router.post("/getshop", (req, res) => {
 
 
 router.post("/", function (req, res) {
-    const email=req.body.email;
-    
-    Food.find({email:email},function (err, users) {
+    const email = req.body.email;
+
+    Food.find({ email: email }, function (err, users) {
         if (err) {
             console.log(err);
         } else {
@@ -73,9 +73,9 @@ router.post("/", function (req, res) {
 
 
 router.post("/lela", function (req, res) {
-    const email=req.body.email;
-    
-    Order.find({vemail:email},function (err, users) {
+    const email = req.body.email;
+
+    Order.find({ vemail: email }, function (err, users) {
         if (err) {
             console.log(err);
         } else {
@@ -85,9 +85,9 @@ router.post("/lela", function (req, res) {
 });
 
 router.post("/lening", function (req, res) {
-    const email=req.body.email;
-    
-    Order.find({vemail:email},function (err, users) {
+    const email = req.body.email;
+
+    Order.find({ vemail: email }, function (err, users) {
         if (err) {
             console.log(err);
         } else {
@@ -98,8 +98,8 @@ router.post("/lening", function (req, res) {
 
 
 router.get("/ten", function (req, res) {
-    
-    
+
+
     Food.find(function (err, users) {
         if (err) {
             console.log(err);
@@ -111,11 +111,24 @@ router.get("/ten", function (req, res) {
 
 
 router.post("/jm", function (req, res) {
-    const email=req.body.email;
-    
-    Order.find({bemail:email},function (err, users) {
+    const email = req.body.email;
+
+    Order.find({ bemail: email }, function (err, users) {
         if (err) {
             console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+});
+
+
+router.post("/sjac", function (req, res) {
+    const email = req.body.email;
+
+    Food.find({ email: email }, function (err, users) {
+        if (err) {
+            res.send("not there");
         } else {
             res.json(users);
         }
@@ -137,7 +150,7 @@ router.post("/jm", function (req, res) {
 // Add a user to db
 
 router.post("/ur", (req, res) => {
-    let h=0;
+    let h = 0;
     const newUser = new User({
         name: req.body.name,
         email: req.body.email,
@@ -145,7 +158,7 @@ router.post("/ur", (req, res) => {
         contactNumber: req.body.contactNumber,
         age: req.body.age,
         batchName: req.body.batchName,
-        wallet:h
+        wallet: h
     });
 
     newUser.save()
@@ -166,11 +179,11 @@ router.post("/placing", (req, res) => {
         quantity: req.body.quantity,
         bemail: req.body.bemail,
         price: req.body.price,
-        status:req.body.status,
-        shopname:req.body.shopname,
-        ordertime:req.body.ordertime
-        
-       
+        status: req.body.status,
+        shopname: req.body.shopname,
+        ordertime: req.body.ordertime
+
+
     });
 
     newUser.save()
@@ -457,7 +470,7 @@ router.post("/bupdate", (req, res) => {
 
 
 router.post("/machine", (req, res) => {
-   
+
     const email = req.body.email;
     const money = req.body.dd;
 
@@ -495,12 +508,36 @@ router.post("/machine", (req, res) => {
 
 });
 
+router.post("/macos", (req, res) => {
+
+    const id = req.body.id;
+    
+
+
+
+
+
+    // Find user by email
+    Food.findById(id, function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            users.soldcount=users.soldcount+1;
+            users.save();
+            res.json(users);
+        }
+    })
+
+
+
+
+});
 
 
 router.post("/far", (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
-    
+
 
     // Find user by email
     User.findOne({ email }).then(user => {
@@ -520,7 +557,7 @@ router.post("/far", (req, res) => {
         }
         else {
             user.favs.push(name);
-            
+
 
             user.save();
             res.json(user);
@@ -541,10 +578,10 @@ router.post("/far", (req, res) => {
 
 
 router.post("/walletism", (req, res) => {
-    var wallet=parseInt(req.body.wallet);
-   
+    var wallet = parseInt(req.body.wallet);
+
     const email = req.body.email;
-    
+
 
     // Find user by email
     User.findOne({ email }).then(user => {
@@ -563,8 +600,8 @@ router.post("/walletism", (req, res) => {
             // });
         }
         else {
-           
-            user.wallet=user.wallet+wallet; 
+
+            user.wallet = user.wallet + wallet;
 
             user.save();
             res.json(user);
@@ -579,10 +616,10 @@ router.post("/walletism", (req, res) => {
 });
 
 router.post("/refund", (req, res) => {
-    var wallet=req.body.addi;
-   
+    var wallet = req.body.addi;
+
     const email = req.body.email;
-    
+
 
     // Find user by email
     User.findOne({ email }).then(user => {
@@ -601,8 +638,8 @@ router.post("/refund", (req, res) => {
             // });
         }
         else {
-           
-            user.wallet=user.wallet+wallet; 
+
+            user.wallet = user.wallet + wallet;
 
             user.save();
             res.json(user);
@@ -619,7 +656,7 @@ router.post("/refund", (req, res) => {
 router.post("/tenner", (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
-    
+
 
     // Find user by email
     User.findOne({ email }).then(user => {
@@ -653,7 +690,7 @@ router.post("/tenner", (req, res) => {
 
 router.post("/foodupdate", function (req, res) {
     const id = req.body.id;
-   
+
 
 
     Food.findById(id, function (err, users) {
@@ -676,7 +713,7 @@ router.post("/foodupdate", function (req, res) {
 
 router.post("/emphasis", function (req, res) {
     const id = req.body.id;
-   
+
 
 
     Order.findById(id, function (err, users) {
@@ -687,17 +724,17 @@ router.post("/emphasis", function (req, res) {
             res.send("An error occured");
         } else {
             console.log(users);
-            if(users.status==="Placed"){
-                users.status="Accepted";
+            if (users.status === "Placed") {
+                users.status = "Accepted";
             }
-            else if(users.status==="Accepted"){
-                users.status="Cooked";
+            else if (users.status === "Accepted") {
+                users.status = "Cooked";
             }
-            else if(users.status==="Cooked"){
-                users.status="ReadyforPickup";
+            else if (users.status === "Cooked") {
+                users.status = "ReadyforPickup";
             }
-            else if(users.status==="ReadyforPickup"){
-                users.status="completed";
+            else if (users.status === "ReadyforPickup") {
+                users.status = "completed";
             }
             users.save();
             res.send("Moved to nextStage");
@@ -711,7 +748,7 @@ router.post("/emphasis", function (req, res) {
 
 router.post("/emphasiser", function (req, res) {
     const id = req.body.id;
-   
+
 
 
     Order.findById(id, function (err, users) {
@@ -722,7 +759,7 @@ router.post("/emphasiser", function (req, res) {
             res.send("An error occured");
         } else {
             console.log(users);
-            users.status="Rejected";
+            users.status = "Rejected";
             users.save();
             res.send("Order has been rejected");
         }
@@ -784,10 +821,11 @@ router.post("/addfood", (req, res) => {
         rating: req.body.rating,
         email: req.body.email,
         type: req.body.type,
-        shopname:req.body.shopname,
-        opentime:req.body.opentime,
-        closetime:req.body.closetime,
-        vendorname:req.body.vendorname
+        shopname: req.body.shopname,
+        opentime: req.body.opentime,
+        closetime: req.body.closetime,
+        vendorname: req.body.vendorname,
+        soldcount: req.body.soldcount
 
 
 

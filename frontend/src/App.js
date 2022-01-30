@@ -27,7 +27,7 @@ import Aag from "./components/common/aagorder";
 import Favo from "./components/common/favors";
 import Shu from "./components/common/statistics";
 import Sk from "./components/common/wallet";
-
+import Tp from "./components/common/toper";
 
 const Layout = () => {
   return (
@@ -72,6 +72,7 @@ function App() {
           <Route path="Favour" element={<Favo />} />
           <Route path="vstati" element={<Shu />} />
           <Route path="Sk" element={<Sk />} />
+          <Route path="top" element={<Tp />} />
         </Route>
       </Routes>
     </BrowserRouter>

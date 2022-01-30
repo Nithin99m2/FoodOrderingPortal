@@ -41,6 +41,11 @@ const FoodSchema = new Schema({
 	vendorname:{
 		type:String,
 		required:false
+	},
+	soldcount:{
+		type:Number,
+		required:false,
+		
 	}
 });
 

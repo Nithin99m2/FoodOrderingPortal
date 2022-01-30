@@ -87,30 +87,35 @@ const FoodLista = (props) => {
                                         <TableCell>{user.ordertime}</TableCell>
                                         <TableCell>{(() => {
                                             if (user.status === "ReadyforPickup") {
-                                                return <Button variant="contained" onClick={()=>{
+                                                return <Button variant="contained" onClick={() => {
+                                                    
+
                                                     const nth = {
                                                         id: user._id,
-                                
+
                                                     };
-                            
+
                                                     axios
-                                                    .post("http://localhost:4000/user/emphasis", nth)
-                                                    .then((response) => {
-                                                      alert(response.data);
-                                                      window.location.reload(false);
-                                                      console.log(response.data);
-                                                    });
-                            
-                            
-                            
+                                                        .post("http://localhost:4000/user/emphasis", nth)
+                                                        .then((response) => {
+                                                            alert(response.data);
+                                                            window.location.reload(false);
+                                                            console.log(response.data);
+                                                        });
+
+
+                                                   
+
+
+
                                                 }}>
-                            
-                                                  
-                                        
-                                                  PickUp
+
+
+
+                                                    PickUp
                                                 </Button>
-                                            } 
-                                            
+                                            }
+
                                         })()}</TableCell>
 
 

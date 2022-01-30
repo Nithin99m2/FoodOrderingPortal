@@ -93,7 +93,7 @@ const Iod = (props) => {
                     <TableCell> {(() => {
                       let ewy = parseInt(user.opentime);
                       let ewyuu = parseInt(user.closetime);
-                      console.log(ewyuu);
+                      console.log(ewy);
 
                       if (hour >= ewy && hour <= ewyuu) {
                         return <Button variant="contained" onClick={() => {

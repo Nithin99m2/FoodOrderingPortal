@@ -86,6 +86,8 @@ const Register = (props) => {
    
   };
 
+  let fg=0;
+
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -98,7 +100,8 @@ const Register = (props) => {
       shopname:shopname,
       opentime:opentime,
       closetime:closetime,
-      vendorname:vendorname
+      vendorname:vendorname,
+      soldcount:fg,
 
       
       

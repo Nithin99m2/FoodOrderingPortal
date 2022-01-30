@@ -15,7 +15,7 @@ const Uprof = (props) => {
   const [stats, setstatus] = useState("");
   const [shopname, setshopname] = useState("");
   const [money, setmoney] = useState("");
-  
+
 
 
 
@@ -80,7 +80,7 @@ const Uprof = (props) => {
 
 
 
-  
+
 
 
 
@@ -155,7 +155,7 @@ const Uprof = (props) => {
         quantity: quantity,
         status: stats,
         shopname: shopname,
-        ordertime:time
+        ordertime: time
 
 
 
@@ -168,7 +168,26 @@ const Uprof = (props) => {
         .then((response) => {
           alert(response.data);
           console.log(response.data);
-         
+
+
+        });
+
+
+
+
+
+      const mli = {
+        id: localStorage.getItem("O_id"),
+
+      }
+
+
+
+      axios
+        .post("http://localhost:4000/user/macos", mli)
+        .then((response) => {
+
+          console.log(response.data);
 
         });
 

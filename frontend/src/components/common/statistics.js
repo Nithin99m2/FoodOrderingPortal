@@ -12,6 +12,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 
 
+
 const Homersk = (props) => {
     const [users, setUsers] = useState([]);
     const [use, setUse] = useState(0);
@@ -60,7 +61,9 @@ const Homersk = (props) => {
                                 {users.map((user, ind) => (
                                     <TableRow key={ind}>
                                         
+                                        
                                         {(()=>{
+                                            console.log(user);
 
                                             if(user.status=="Placed"){
                                                 hello=hello+1;
@@ -103,7 +106,16 @@ const Homersk = (props) => {
                 Orders Pending : {ko}
 
             </div>
+            <div><Button variant="contained" onClick={()=>{
+
+                navigate("/top");
+                
+                
+                
+                
+            }}>Top5 items</Button></div>
         </div >
+
 
        
 
