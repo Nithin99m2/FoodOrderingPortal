@@ -57,7 +57,7 @@ const FoodList = (props) => {
             .post("http://localhost:4000/user/lcu", heh)
             .then((response) => {
                 setyg(response.data.counter);
-               
+
             })
             .catch((error) => {
                 console.log(error);
@@ -78,7 +78,7 @@ const FoodList = (props) => {
     // }, []);
 
 
-   
+
 
 
     return (
@@ -115,85 +115,16 @@ const FoodList = (props) => {
                                         <TableCell>{user.status}</TableCell>
                                         <TableCell>{user.ordertime}</TableCell>
                                         <TableCell>{(() => {
-                                            console.log(user.yes);
-
-                                            if (user.status == "Accepted" && user.yes == 0) {
-
-                                                var templateParams = {
-                                                    subject: user.name,
-                                                    name: 'Dear Buyer, Your order has been Accepted',
-
-
-
-                                                };
-// template_ikeuk05
-
-
-                                                emailjs.send('service_ti4v7h2', 'template_ikeuk05', templateParams, 'user_a2QmVasySjQNnNT8Aix7m')
-                                                    .then(function (response) {
-                                                        console.log('SUCCESS!', response.status, response.text);
-                                                    }, function (error) {
-                                                        console.log('FAILED...', error);
-                                                    });
-
-                                                const hebh = {
-                                                    id: user._id,
-                                                }
-                                                axios
-                                                    .post("http://localhost:4000/user/hopes", hebh)
-                                                    .then((response) => {
-                                                        console.log(response.data);
-                                                    })
-                                                    .catch((error) => {
-                                                        console.log(error);
-                                                    });
-
-
-
-                                            }
-                                            if (user.status == "Rejected" && user.ant == 0) {
-
-                                                var templateParams = {
-                                                    subject: user.name,
-                                                    name: 'Dear Buyer, Your order has been Rejected',
-
-
-
-                                                };
-
-
-
-                                                emailjs.send('service_ti4v7h2', 'template_ikeuk05', templateParams, 'user_a2QmVasySjQNnNT8Aix7m')
-                                                    .then(function (response) {
-                                                        console.log('SUCCESS!', response.status, response.text);
-                                                    }, function (error) {
-                                                        console.log('FAILED...', error);
-                                                    });
-
-                                                const hebh = {
-                                                    id: user._id,
-                                                }
-                                                axios
-                                                    .post("http://localhost:4000/user/hopesof", hebh)
-                                                    .then((response) => {
-                                                        console.log(response.data);
-                                                    })
-                                                    .catch((error) => {
-                                                        console.log(error);
-                                                    });
-
-
-
-                                            }
-
-
-
 
 
 
                                             if (user.status != "ReadyforPickup" && user.status != "Rejected" && user.status != "completed") {
 
                                                 return <Button variant="contained" onClick={() => {
+
+
+
+
 
 
                                                     const nth = {
@@ -204,6 +135,33 @@ const FoodList = (props) => {
                                                     axios
                                                         .post("http://localhost:4000/user/emphasis", nth)
                                                         .then((response) => {
+                                                            if (user.status === "Placed") {
+
+
+                                                                var templateParams = {
+                                                                    subject: user.shopname,
+                                                                    tomail: 'nithil99m2@gmail.com',
+                                                                    vendor: user.name,
+                                                                    message: 'Your order has been Accepted',
+
+
+
+
+                                                                };
+
+                                                                // template_ikeuk05
+
+
+                                                                emailjs.send('service_ti4v7h2', 'template_ikeuk05', templateParams, 'user_a2QmVasySjQNnNT8Aix7m')
+                                                                    .then(function (response) {
+                                                                        console.log('SUCCESS!', response.status, response.text);
+                                                                    }, function (error) {
+                                                                        console.log('FAILED...', error);
+                                                                    });
+                                                                
+                                                                    
+
+                                                            }
                                                             alert(response.data);
                                                             if (response.data === "Moved to the next stage") {
                                                                 window.location.reload(false);
@@ -211,7 +169,17 @@ const FoodList = (props) => {
 
                                                             }
 
+
+                                                            
+                                                           
+
+
                                                         });
+
+
+
+
+
 
 
 
@@ -233,10 +201,33 @@ const FoodList = (props) => {
                                             if (user.status == "Placed") {
 
                                                 return <Button variant="contained" onClick={() => {
+
+
+                                                    var templateParams = {
+                                                        subject: user.shopname,
+                                                        tomail: 'nithil99m2@gmail.com',
+                                                        vendor: user.name,
+                                                        message: 'Your order has been rejected',
+
+
+
+                                                    };
+
+
+
+                                                    emailjs.send('service_ti4v7h2', 'template_ikeuk05', templateParams, 'user_a2QmVasySjQNnNT8Aix7m')
+                                                        .then(function (response) {
+                                                            console.log('SUCCESS!', response.status, response.text);
+                                                        }, function (error) {
+                                                            console.log('FAILED...', error);
+                                                        });
+
+
                                                     const nth = {
                                                         id: user._id,
 
                                                     };
+
 
                                                     axios
                                                         .post("http://localhost:4000/user/emphasiser", nth)
