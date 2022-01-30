@@ -72,6 +72,18 @@ router.post("/", function (req, res) {
 });
 
 
+router.get("/okay", function (req, res) {
+
+
+    Food.find(function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+});
+
 
 router.post("/lela", function (req, res) {
     const email = req.body.email;

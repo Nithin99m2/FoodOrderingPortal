@@ -28,6 +28,8 @@ import Favo from "./components/common/favors";
 import Shu from "./components/common/statistics";
 import Sk from "./components/common/wallet";
 import Tp from "./components/common/toper";
+import Suba from "./components/common/dash";
+
 
 const Layout = () => {
   return (
@@ -73,6 +75,7 @@ function App() {
           <Route path="vstati" element={<Shu />} />
           <Route path="Sk" element={<Sk />} />
           <Route path="top" element={<Tp />} />
+          <Route path="Suba" element={<Suba />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -26,6 +26,9 @@ const Navbarer = () => {
           <Button color="inherit" onClick={() => navigate("/addtocart")}>
             Items
           </Button>
+          <Button color="inherit" onClick={() => navigate("/Suba")}>
+            Dashboard
+          </Button>
          
           <Button color="inherit" onClick={() => navigate("/carter")}>
             MyCart
