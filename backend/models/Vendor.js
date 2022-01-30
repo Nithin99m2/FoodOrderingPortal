@@ -30,6 +30,10 @@ const VendorSchema = new Schema({
     closetime:{
 		type: String,
 		required: true
+	},
+	counter:{
+		type: Number,
+		required: false
 	}
 });
 

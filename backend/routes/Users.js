@@ -181,7 +181,8 @@ router.post("/placing", (req, res) => {
         price: req.body.price,
         status: req.body.status,
         shopname: req.body.shopname,
-        ordertime: req.body.ordertime
+        ordertime: req.body.ordertime,
+    
 
 
     });
@@ -203,7 +204,8 @@ router.post("/vr", (req, res) => {
         email: req.body.email,
         contactnumber: req.body.contactnumber,
         opentime: req.body.opentime,
-        closetime: req.body.closetime
+        closetime: req.body.closetime,
+        counter:0
     });
 
     newUser.save()
@@ -306,6 +308,146 @@ router.post("/getinfo", (req, res) => {
         }
         else {
             res.json(user);
+
+        }
+    });
+
+
+
+
+});
+
+
+
+router.post("/kummar", (req, res) => {
+    const email = req.body.email;
+
+
+    var halo = 0;
+    // Find user by email
+    Vendor.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            alert("user not exists");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+            // });
+        }
+        else {
+            user.counter=user.counter+1;
+            
+            user.save();
+            res.json(user);
+
+        }
+    });
+
+
+
+
+});
+
+
+
+router.post("/kummari", (req, res) => {
+    const email = req.body.email;
+
+
+    var halo = 0;
+    // Find user by email
+    Vendor.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            alert("user not exists");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+            // });
+        }
+        else {
+            user.counter=user.counter-1;
+            
+            user.save();
+            res.json(user);
+
+        }
+    });
+
+
+
+
+});
+
+
+
+
+router.post("/kummarina", (req, res) => {
+    const id = req.body.id;
+    Food.findById(id, function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            users.vector=1;
+            users.save();
+            res.json(users);
+        }
+    })
+
+
+
+
+});
+
+
+
+router.post("/kummarinam", (req, res) => {
+    const id = req.body.id;
+    Food.findById(id, function (err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            users.scalar=1;
+            users.save();
+            res.json(users);
+        }
+    })
+
+
+
+
+});
+
+router.post("/lcu", (req, res) => {
+    const email = req.body.email;
+
+
+    var halo = 0;
+    // Find user by email
+    Vendor.findOne({ email }).then(user => {
+        // Check if user email exists
+        if (!user) {
+
+            alert("user not exists");
+
+
+            //halo=1;
+
+            // return res.status(404).json({
+            // 	error: "Email not found",
+            // });
+        }
+        else {
+            
+            res.send(user);
 
         }
     });
@@ -723,21 +865,69 @@ router.post("/emphasis", function (req, res) {
             console.log(err);
             res.send("An error occured");
         } else {
-            console.log(users);
-            if (users.status === "Placed") {
-                users.status = "Accepted";
-            }
-            else if (users.status === "Accepted") {
-                users.status = "Cooked";
-            }
-            else if (users.status === "Cooked") {
-                users.status = "ReadyforPickup";
-            }
-            else if (users.status === "ReadyforPickup") {
-                users.status = "completed";
-            }
-            users.save();
-            res.send("Moved to nextStage");
+            const email=users.vemail;
+
+            Vendor.findOne({ email}).then(user => {
+                // Check if user email exists
+                if (!user) {
+        
+                    res.send("error occured");
+        
+        
+                    //halo=1;
+        
+                    // return res.status(404).json({
+                    // 	error: "Email not found",
+        
+        
+                    // });
+                }
+                else {
+                    var hi;
+                    if (users.status === "Placed") {
+                        
+                        if(user.counter<10){
+                            users.status = "Accepted";
+                            user.counter=user.counter+1;
+
+                        }
+                        else{
+                            hi="Busy";
+
+                        }
+                    }
+                    else if (users.status === "Accepted") {
+                        users.status = "Cooked";
+                    }
+                    else if (users.status === "Cooked") {
+                        user.counter=user.counter-1;
+                        users.status = "ReadyforPickup";
+                    }
+                    else if (users.status === "ReadyforPickup") {
+                        
+                        users.status = "completed";
+
+                    }
+                    user.save();
+                    users.save();
+
+                    if(hi==="Busy"){
+                        res.send("Vendor is busy");
+
+                    }
+                    else{
+                        res.send("Moved to the next stage");
+
+                    }
+        
+        
+                }
+            });
+
+           
+            
+            
+            
         }
     })
 });

@@ -27,6 +27,8 @@ import { useNavigate } from "react-router-dom";
 const FoodList = (props) => {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
+    const [yg, setyg] = useState(0);
+    var hello = 0;
 
 
     useEffect(() => {
@@ -42,8 +44,33 @@ const FoodList = (props) => {
             .catch((error) => {
                 console.log(error);
             });
+
+
+
+        axios
+            .post("http://localhost:4000/user/lcu", heh)
+            .then((response) => {
+                setyg(response.data.counter);
+                console.log(response.data.counter);
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }, []);
 
+
+
+
+    // useEffect(() => {
+    //     const hehr = {
+    //         email: localStorage.getItem("uemail")
+    //     }
+    //     
+    // }, []);
+
+
+    console.log(yg);
 
 
 
@@ -79,32 +106,47 @@ const FoodList = (props) => {
                                         <TableCell>{user.status}</TableCell>
                                         <TableCell>{user.ordertime}</TableCell>
                                         <TableCell>{(() => {
+
+
+                                
                                             if (user.status != "ReadyforPickup" && user.status != "Rejected" && user.status != "completed") {
 
                                                 return <Button variant="contained" onClick={() => {
-                                                    const nth = {
-                                                        id: user._id,
+                                                    
 
-                                                    };
+                                                        const nth = {
+                                                            id: user._id,
 
-                                                    axios
-                                                        .post("http://localhost:4000/user/emphasis", nth)
-                                                        .then((response) => {
-                                                            alert(response.data);
-                                                            window.location.reload(false);
-                                                            console.log(response.data);
-                                                        });
+                                                        };
+
+                                                        axios
+                                                            .post("http://localhost:4000/user/emphasis", nth)
+                                                            .then((response) => {
+                                                                alert(response.data);
+                                                                if(response.data==="Moved to the next stage"){
+                                                                    window.location.reload(false);
+                                                                    console.log(response.data);
+
+                                                                }
+                                                                
+                                                            });
 
 
 
+                                                   
                                                 }}>
+
 
 
 
                                                     MovetoNextstage
                                                 </Button>
                                             }
-                                        })()}</TableCell>
+
+
+
+                                        })()}
+                                        </TableCell>
                                         <TableCell>{(() => {
                                             if (user.status == "Placed") {
 
@@ -123,21 +165,21 @@ const FoodList = (props) => {
                                                         });
 
 
-                                                    var qu=user.quantity;
-                                                    var pr=user.price;
-                                                    qu=qu*pr;
+                                                    var qu = user.quantity;
+                                                    var pr = user.price;
+                                                    qu = qu * pr;
 
-                                                    const sd ={
-                                                        email:user.bemail,
-                                                        addi:qu
+                                                    const sd = {
+                                                        email: user.bemail,
+                                                        addi: qu
 
                                                     }
 
                                                     axios
                                                         .post("http://localhost:4000/user/refund", sd)
                                                         .then((response) => {
-                                                            
-                                                            
+
+
                                                             console.log(response.data);
                                                         });
 

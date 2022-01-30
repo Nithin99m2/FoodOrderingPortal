@@ -13,6 +13,7 @@ const Vprof = (props) => {
     const [contactnumber, setContactNumber] = useState("");
     const [opentime, setopentime] = useState("");
     const [closetime, setclosetime] = useState("");
+    const [counter, setcounter] = useState("");
 
     const onChangeUsername = (event) => {
         setName(event.target.value);
@@ -78,6 +79,7 @@ const Vprof = (props) => {
                 setPassword(response.data.password);
                 setopentime(response.data.opentime);
                 setclosetime(response.data.closetime);
+                setcounter(response.data.counter);
 
 
 
@@ -121,6 +123,7 @@ const Vprof = (props) => {
         <div style={{ textAlign: "center" }} >Name          : {name}</div>
         <div style={{ textAlign: "center" }} >ContactNumber : {contactnumber}</div>
         <div style={{ textAlign: "center" }} >Shopname      : {shopname}</div>
+        <div style={{ textAlign: "center" }} >Counter      : {counter}</div>
         <br/>
         <Grid container align={"center"} spacing={2}>
       <Grid item xs={12}>
