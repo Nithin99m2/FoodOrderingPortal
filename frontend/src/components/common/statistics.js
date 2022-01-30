@@ -51,6 +51,8 @@ const Homersk = (props) => {
         <div classname="container">
             <Navbarers />
             <br />
+            <h1 style={{ textAlign: "center" }}>Statistics page</h1>
+    <br/>
             <Grid>
 
                 <Grid item xs={12} md={9} lg={9}>
@@ -97,7 +99,7 @@ const Homersk = (props) => {
                     </Paper>
                 </Grid>
             </Grid>
-            <div>
+            <div style={{ textAlign: "center" }}>
                 <br/>
                 Orders placed : {hello}
                 <br/>
@@ -106,7 +108,8 @@ const Homersk = (props) => {
                 Orders Pending : {ko}
 
             </div>
-            <div><Button variant="contained" onClick={()=>{
+            <br/>
+            <div style={{ textAlign: "center" }}><Button variant="contained" onClick={()=>{
 
                 navigate("/top");
                 

@@ -22,11 +22,15 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import Navbarer from "../templates/nav1";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 
 const FoodLista = (props) => {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
+   
 
 
     useEffect(() => {
@@ -55,6 +59,8 @@ const FoodLista = (props) => {
         <div classname="container">
             <Navbarer />
             <br />
+            <h1 style={{ textAlign: "center" }}>My Cart</h1>
+    <br/>
             <Grid>
 
                 <Grid item xs={12} md={9} lg={9}>
@@ -117,6 +123,21 @@ const FoodLista = (props) => {
                                             }
 
                                         })()}</TableCell>
+                                        <TableCell>{(() => {
+                                            if (user.status === "completed") {
+                                                return <Button variant="contained" onClick={() => {
+
+
+                                                }}>
+
+
+
+                                                    RateItem
+                                                </Button>
+                                            }
+
+                                        })()}</TableCell>
+
 
 
 

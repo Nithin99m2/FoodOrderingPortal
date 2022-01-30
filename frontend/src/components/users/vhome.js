@@ -19,6 +19,8 @@ const Prom = (props) => {
   return <div classname="container">
     <Navbarers/>
     <br/>
+    <h1 style={{ textAlign: "center" }}>Vendor Home</h1>
+    <br/>
   </div>;
 };
 

@@ -59,6 +59,9 @@ const Iod = (props) => {
     <div classname="container">
       <Navbarer />
       <br />
+      
+    <h1 style={{ textAlign: "center" }}>Food items list</h1>
+    <br/>
       <Grid>
 
         <Grid item xs={12} md={9} lg={9}>

@@ -88,6 +88,8 @@ const Register = (props) => {
 
   let fg=0;
 
+  var nmv=0;
+
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -96,7 +98,7 @@ const Register = (props) => {
       email: localStorage.getItem("uemail"),
       price : price,
       type : type,
-      rating : rating,
+      rating : nmv,
       shopname:shopname,
       opentime:opentime,
       closetime:closetime,
@@ -125,7 +127,8 @@ const Register = (props) => {
   
    
 
-<br/>
+<br/><h1 style={{ textAlign: "center" }}>Enter details of food item </h1>
+    <br/>
     <Grid container align={"center"} spacing={2}>
       <Grid item xs={12}>
         <TextField
@@ -149,14 +152,6 @@ const Register = (props) => {
           variant="outlined"
           value={type}
           onChange={onChangetype}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          label="rating"
-          variant="outlined"
-          value={rating}
-          onChange={onChangerating}
         />
       </Grid>
       

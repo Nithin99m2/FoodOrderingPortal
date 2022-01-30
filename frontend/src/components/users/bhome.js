@@ -19,6 +19,7 @@ const Pro = (props) => {
   return <div classname="container">
     <Navbarer/>
     <br/>
+    <h1 style={{ textAlign: "center" }}>Buyer Home page</h1>
   </div>;
 };
 

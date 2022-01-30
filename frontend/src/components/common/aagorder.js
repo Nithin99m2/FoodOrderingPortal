@@ -78,6 +78,8 @@ const FoodList = (props) => {
         <div classname="container">
             <Navbarers />
             <br />
+            <h1 style={{ textAlign: "center" }}>Current Status of Orders</h1>
+    <br/>
             <Grid>
 
                 <Grid item xs={12} md={9} lg={9}>
